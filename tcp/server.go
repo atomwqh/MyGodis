@@ -60,7 +60,7 @@ func ListenAndServe(listener net.Listener, handler tcp.Handler, closeChan chan s
 		case err := <-errCh:
 			logger.Error(fmt.Sprintf("accept error: %s", err.Error()))
 		}
-		logger.Info("accept close")
+		logger.Info("accept close, shutting down...")
 		_ = listener.Close()
 		_ = handler.Close()
 	}()
