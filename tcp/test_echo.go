@@ -3,7 +3,6 @@ package tcp
 import (
 	"bufio"
 	"context"
-	"fmt"
 	"log"
 	"net"
 )
@@ -13,22 +12,22 @@ type Handler interface {
 	Close() error
 }
 
-func ListenAndServe(address string) {
-	listener, err := net.Listen("tcp", address)
-	if err != nil {
-		log.Fatal(fmt.Sprintf("listen tcp err:%s", err))
-	}
-	defer listener.Close()
-	log.Println(fmt.Sprintf("listen tcp success, bind : %s", address))
-
-	for {
-		conn, err := listener.Accept()
-		if err != nil {
-			log.Fatal(fmt.Sprintf("accept err:%v", err))
-		}
-		go Handle(conn)
-	}
-}
+//func ListenAndServe(address string) {
+//	listener, err := net.Listen("tcp", address)
+//	if err != nil {
+//		log.Fatal(fmt.Sprintf("listen tcp err:%s", err))
+//	}
+//	defer listener.Close()
+//	log.Println(fmt.Sprintf("listen tcp success, bind : %s", address))
+//
+//	for {
+//		conn, err := listener.Accept()
+//		if err != nil {
+//			log.Fatal(fmt.Sprintf("accept err:%v", err))
+//		}
+//		go Handle(conn)
+//	}
+//}
 
 func Handle(conn net.Conn) {
 	reader := bufio.NewReader(conn)
@@ -47,6 +46,6 @@ func Handle(conn net.Conn) {
 	}
 }
 
-func main() {
-	ListenAndServe(":8000")
-}
+//func main() {
+//	ListenAndServe(":8000")
+//}
