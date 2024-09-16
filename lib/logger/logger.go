@@ -51,10 +51,10 @@ type Logger struct {
 	entryPool *sync.Pool
 }
 
-var DefaultLogger = NewStdoutLogger()
+var DefaultLogger = MakeStdoutLogger()
 
-// NewStdoutLogger creates a logger which print msg to stdout
-func NewStdoutLogger() *Logger {
+// MakeStdoutLogger creates a logger which print msg to stdout
+func MakeStdoutLogger() *Logger {
 	logger := &Logger{
 		logFile:   nil,
 		logger:    log.New(os.Stdout, "", flags),
