@@ -302,6 +302,7 @@ func (dict *ConcurrentDict) Clear() {
 	*dict = *MakeConcurrent(dict.shardCount)
 }
 
+// 字符串转正则表达式匹配
 // func (dict *ConcurrentDict) DictScan(cursor int, count int, pattern string) ([][]byte, int) {
 // 	size := dict.Len()
 // 	result := make([][]byte, 0)
